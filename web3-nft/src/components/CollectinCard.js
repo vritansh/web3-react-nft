@@ -2,7 +2,10 @@ import React from 'react'
 
 const CollectinCard = () => {
   return (
-    <div>CollectinCard</div>
+        <div className="collectionCard">
+                
+  
+        </div>
   )
 }
 
