@@ -1,11 +1,12 @@
 import React from 'react'
 import CollectinCard from './CollectinCard'
+import './PunkList.css'
 
 const PunkList = ({punkListData}) => {
     console.log(punkListData)
   return (
 
-    <div>
+    <div class='punkList'>
             { 
                 punkListData.map(punk => (
                         <div>
