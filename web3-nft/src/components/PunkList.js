@@ -6,7 +6,7 @@ const PunkList = ({punkListData, setSelectecPunk } ) => {
     console.log(punkListData)
   return (
 
-    <div class='punkList'>
+    <div className='punkList'>
             { 
                 punkListData.map(punk => (
                         <div onClick ={ ()=> setSelectecPunk(punk.token_id)}>
