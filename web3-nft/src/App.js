@@ -5,15 +5,15 @@ import CollectinCard from './components/CollectinCard';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 import PunkList from './components/PunkList';
-
+import Main from './components/Main';
 
 function App() {
 
   const [ punkListData, setPunkListData]  = useState([])
-
+  const [ selectedPunk, setSelectedPunk] = useState(0)
 useEffect (() =>{
 const getMyNfts = async() =>{
-  const openSeaData = await axios.get( "https://testnets-api.opensea.io/assets?order_direction=asc&asset_contract_address=");
+  const openSeaData = await axios.get( "https://testnets-api.opensea.io/assets?order_direction=asc&asset_contract_address=0x141398458c21c3E788A57CE046C8301cABB82f8d");
     console.log("working fine")  
   setPunkListData(openSeaData.data.assets)
    
@@ -25,14 +25,16 @@ const getMyNfts = async() =>{
   return( 
   <div className= "app">
   <Header />
-
-  <CollectinCard id={0} name={'Bandana Punk'} traits={[{'value': 7}]} image='https://fatcats.nftlabs.to/assets/images/fatcatxrpl-1.png'   />     
-  <PunkList punkListData={punkListData} />
+  {
+    punkListData.length > 0 && (
+      <>
+      < Main punkListData={punkListData}  selectedPunk = {selectedPunk} />
+      < PunkList punkListData={punkListData} setSelectecPunk={setSelectedPunk} />
+      </>
+    )
+  }
 
   </div>
-
-
-
   );
      
 }
